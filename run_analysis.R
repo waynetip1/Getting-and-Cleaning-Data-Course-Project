@@ -83,6 +83,7 @@ d_set_2 <- summarise_all(d_set_2,mean)
 d_set_2 <- d_set_2 %>%
         select(subjectId,activityId,activityName,everything()) %>%
         arrange(subjectId,activityId)
+View(d_set_2)
 
 
 # write the file
