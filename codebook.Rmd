@@ -1,0 +1,244 @@
+---
+title: "Codebook"
+author: "Wayne Tipton"
+date: "September 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+##This data set is dervived from a collection of measurements from accelerometers from the Samsung Galaxy S smartphone. 
+
+## 1. Raw Data Descriptions:
+### Data was collected from the UCI Machine Learning Repository: Human Activity Recognition Using Smartphones Data Set
+
+## 2. Data Set Information:
+####The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) 
+
+## 3. The raw data Files: 
+### The raw data used was in .txt format
+
+#### features_info.txt: Shows information about the variables used on the feature vector.
+
+####features.txt: List of all features.
+
+####activity_labels.txt: Links the class labels with their activity name
+
+####y_train.txt: Training labels
+
+####X_test.txt: Test set
+
+####y_test.txt: Test labels
+
+####subject_train.txt: Train Subject labels
+
+####subject_test.txt: Test Subject labels
+
+
+## 4. Creating the tidy datafile
+#### The tidy data set is tidy because each variable is saved in its own column, and each observation is saved in its own row.  The tidy data set is wide but is still a tidy dataset. The data set is the average of each mean and standard deviation variable. 
+
+###1. Download all the data files
+###2. Read in the data files and assign to r data objects
+###3. Add the proper column names to the appropriate data object
+###4. Combine the data objects to create one data object
+###5. Create a subset on the data object where the variables were only mean and standard deviation calculations
+###6. Rename the variables with more descriptive names
+###7. Reshape the data by gouping by activityName and subject ID
+###8. Apply summarize the data by calculating mean on all columns
+###9. Arrange the data by subjectId and activityId
+
+
+## 5. Cleaning of the data 
+###1. Used merge to join the data files
+###2. Used grepl to extract variables that contained mean and standard deviation calucaltions
+###3. Used dsub to find and replace column patterns in order to make descriptive variables
+###4. Used dyplr (goup_by, summarise,select,arrange) to create the final tidyDataSet.txt file
+
+## 6. Description of the variables in the tidyDataSet.txt 
+### The tidyDataSet.txt file is the average of each variable for each activity and each subject.
+### Dimensions of the dataset: 180 Rows, 82 Columns
+### Data Types: One factor column= activityName,one integer column=subjectId, remaining 80 colums are numeric type
+        factor integer numeric 
+         1       1      80
+
+## 7. Variable descriptions
+
+#### 1. Time or fourier is based on time or frequency measurements.
+#### 2. Body = related to body movement.
+#### 3. Gravity = acceleration of gravity
+#### 4. Acc = accelerometer measurement
+#### 5. Gyro = gyroscopic measurements
+#### 6. Jerk = sudden movement acceleration
+#### 7. Mag = magnitude of movement
+#### 8. mean and sdev are calculated for each subject for each activity for each mean and standard deviation measurements.
+
+
+## 8. Variables present in the dataset
+[1] "subjectId"
+
+[2] "activityId"
+ 
+[3] "activityName"  
+ 
+[4] "time_BodyAcc_mean_Xaxis"           
+ 
+[5] "time_BodyAcc_mean_Yaxis"           
+ 
+[6] "time_BodyAcc_mean_Zaxis"           
+ 
+[7] "time_BodyAcc_sdev_Xaxis"           
+ 
+[8] "time_BodyAcc_sdev_Yaxis"           
+ 
+[9] "time_BodyAcc_sdev_Zaxis"           
+
+[10] "time_GravityAcc_mean_Xaxis"        
+
+[11] "time_GravityAcc_mean_Yaxis"        
+
+[12] "time_GravityAcc_mean_Zaxis"        
+
+[13] "time_GravityAcc_sdev_Xaxis"        
+
+[14] "time_GravityAcc_sdev_Yaxis"        
+
+[15] "time_GravityAcc_sdev_Zaxis"        
+
+[16] "time_BodyAccJerk_mean_Xaxis"       
+
+[17] "time_BodyAccJerk_mean_Yaxis"       
+
+[18] "time_BodyAccJerk_mean_Zaxis"       
+
+[19] "time_BodyAccJerk_sdev_Xaxis"       
+
+[20] "time_BodyAccJerk_sdev_Yaxis"       
+
+[21] "time_BodyAccJerk_sdev_Zaxis"       
+
+[22] "time_BodyGyro_mean_Xaxis"          
+
+[23] "time_BodyGyro_mean_Yaxis"          
+
+[24] "time_BodyGyro_mean_Zaxis"          
+
+[25] "time_BodyGyro_sdev_Xaxis"          
+
+[26] "time_BodyGyro_sdev_Yaxis"          
+
+[27] "time_BodyGyro_sdev_Zaxis"          
+
+[28] "time_BodyGyroJerk_mean_Xaxis"      
+
+[29] "time_BodyGyroJerk_mean_Yaxis"      
+
+[30] "time_BodyGyroJerk_mean_Zaxis"      
+
+[31] "time_BodyGyroJerk_sdev_Xaxis"      
+
+[32] "time_BodyGyroJerk_sdev_Yaxis"      
+
+[33] "time_BodyGyroJerk_sdev_Zaxis"      
+
+[34] "time_BodyAccMag_mean"              
+
+[35] "time_BodyAccMag_sdev"              
+
+[36] "time_GravityAccMag_mean"           
+
+[37] "time_GravityAccMag_sdev"           
+
+[38] "time_BodyAccJerkMag_mean"          
+
+[39] "time_BodyAccJerkMag_sdev"          
+
+[40] "time_BodyGyroMag_mean"             
+
+[41] "time_BodyGyroMag_sdev"             
+
+[42] "time_BodyGyroJerkMag_mean"         
+
+[43] "time_BodyGyroJerkMag_sdev"         
+
+[44] "fourier_BodyAcc_mean_Xaxis"        
+
+[45] "fourier_BodyAcc_mean_Yaxis"        
+
+[46] "fourier_BodyAcc_mean_Zaxis"        
+
+[47] "fourier_BodyAcc_sdev_Xaxis"        
+
+[48] "fourier_BodyAcc_sdev_Yaxis"        
+
+[49] "fourier_BodyAcc_sdev_Zaxis"        
+
+[50] "fourier_BodyAcc_meanFreq_Xaxis"    
+
+[51] "fourier_BodyAcc_meanFreq_Yaxis"    
+
+[52] "fourier_BodyAcc_meanFreq_Zaxis"    
+
+[53] "fourier_BodyAccJerk_mean_Xaxis"    
+
+[54] "fourier_BodyAccJerk_mean_Yaxis"    
+
+[55] "fourier_BodyAccJerk_mean_Zaxis"    
+
+[56] "fourier_BodyAccJerk_sdev_Xaxis"    
+
+[57] "fourier_BodyAccJerk_sdev_Yaxis"    
+
+[58] "fourier_BodyAccJerk_sdev_Zaxis"    
+
+[59] "fourier_BodyAccJerk_meanFreq_Xaxis"
+
+[60] "fourier_BodyAccJerk_meanFreq_Yaxis"
+
+[61] "fourier_BodyAccJerk_meanFreq_Zaxis"
+
+[62] "fourier_BodyGyro_mean_Xaxis"       
+
+[63] "fourier_BodyGyro_mean_Yaxis"       
+
+[64] "fourier_BodyGyro_mean_Zaxis"       
+
+[65] "fourier_BodyGyro_sdev_Xaxis"       
+
+[66] "fourier_BodyGyro_sdev_Yaxis"       
+
+[67] "fourier_BodyGyro_sdev_Zaxis"       
+
+[68] "fourier_BodyGyro_meanFreq_Xaxis"   
+
+[69] "fourier_BodyGyro_meanFreq_Yaxis"   
+
+[70] "fourier_BodyGyro_meanFreq_Zaxis"   
+
+[71] "fourier_BodyAccMag_mean"           
+
+[72] "fourier_BodyAccMag_sdev"           
+
+[73] "fourier_BodyAccMag_meanFreq"       
+
+[74] "fourier_BodyAccJerkMag_mean"       
+
+[75] "fourier_BodyAccJerkMag_sdev"       
+
+[76] "fourier_BodyAccJerkMag_meanFreq"   
+
+[77] "fourier_BodyGyroMag_mean"          
+
+[78] "fourier_BodyGyroMag_sdev"          
+
+[79] "fourier_BodyGyroMag_meanFreq"      
+
+[80] "fourier_BodyGyroJerkMag_mean"      
+
+[81] "fourier_BodyGyroJerkMag_sdev"      
+
+[82] "fourier_BodyGyroJerkMag_meanFreq" 
+
